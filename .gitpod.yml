@@ -3,5 +3,5 @@ image:
 
 tasks:
   - name: initialization
-    init: yarn
+    init: npm install
     command: exit
