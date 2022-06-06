@@ -1,6 +1,17 @@
 ---
 import BaseLayout from '@layouts/base.astro'
+import ArticleComponent from '@components/article.astro'
+import { Markdown } from 'astro/components'
+
+const posts = await Astro.glob('./posts/*.md')
 ---
-<BaseLayout>
-	<h1>Hello</h1>
+<BaseLayout title="radenazure">
+	{posts
+		.sort((a,b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf())
+		.map((post) => (
+		<ArticleComponent title={post.frontmatter.title} link={post.url}>
+			<Markdown content={post.rawContent()} />
+		</ArticleComponent>
+		))
+	}
 </BaseLayout>

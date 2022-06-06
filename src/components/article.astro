@@ -1,0 +1,18 @@
+---
+const { title, isInPage, link } = Astro.props
+---
+
+<section class="max-w-screen-md mx-auto pt-8 pb-16 px-4">
+    <article class="prose md:prose-lg max-w-none">
+        <Fragment>
+            {isInPage 
+                ? <h1 class="text-center text-4xl md:text-6xl" set:text={title} />
+                : ( <h2 class="not-prose text-center text-4xl md:text-6xl link-hover">
+                        <a href={link}>{title}</a>
+                    </h2>
+                  )
+            }
+        </Fragment>
+        <slot />
+    </article>
+</section>

@@ -1,0 +1,11 @@
+---
+import BaseLayout from './base.astro'
+import ArticleComponent from '@components/article.astro'
+
+const { content } = Astro.props
+---
+<BaseLayout title={content.title} isInPage={true}>
+    <ArticleComponent title={content.title}>
+        <slot/>
+    </ArticleComponent>
+</BaseLayout>

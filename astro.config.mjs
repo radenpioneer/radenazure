@@ -5,6 +5,7 @@ import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://radenazure.my.id/',
   integrations: [
     react(),
     astroImageTools
