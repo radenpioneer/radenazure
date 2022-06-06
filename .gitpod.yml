@@ -1,0 +1,7 @@
+image:
+  file: .gitpod.dockerfile
+
+tasks:
+  - name: initialization
+    init: yarn
+    command: exit
