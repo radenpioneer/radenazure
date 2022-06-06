@@ -1,7 +1,7 @@
 module.exports = {
   plugins: {
-    'postcss-font-magician': {},
     tailwindcss: {},
+    'postcss-font-magician': { foundries: 'google' },
     autoprefixer: {},
   },
 }

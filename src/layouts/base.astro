@@ -1,5 +1,6 @@
 ---
 import '@styles/global.scss'
+import Header from '@components/header.astro'
 ---
 <html lang="id">
 	<head>
@@ -8,6 +9,9 @@ import '@styles/global.scss'
 		<title>Astro</title>
 	</head>
 	<body>
-		<slot />
+		<Header />
+		<main>
+			<slot />
+		</main>
 	</body>
 </html>
