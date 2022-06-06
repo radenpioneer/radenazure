@@ -3,10 +3,16 @@ import BaseLayout from '@layouts/base.astro'
 import ArticleComponent from '@components/article.astro'
 import { Markdown } from 'astro/components'
 
-const posts = await Astro.glob('./posts/*.md')
+export async function getStaticPaths({ paginate }) {
+	const data = await Astro.glob('./posts/*.md')
+	const posts = data.filter(post => !post.frontmatter.draft).sort((a,b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf())
+	return paginate(posts, { pagesize: 9 })
+}
+
+const { page } = Astro.props
 ---
 <BaseLayout title="radenazure">
-	{posts
+	{page.data
 		.sort((a,b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf())
 		.map((post) => (
 		<ArticleComponent title={post.frontmatter.title} link={post.url}>
