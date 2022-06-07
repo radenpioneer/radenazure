@@ -1,0 +1,23 @@
+---
+import icon from '@assets/icon.jpg?w=80'
+import menu from "./shared/menu";
+---
+<section class="drawer">
+	<input id="main-drawer" type="checkbox" class="drawer-toggle" /> 
+    <section class="drawer-content">
+        <slot />
+    </section>
+    <section class="drawer-side">
+        <label for="main-drawer" class="drawer-overlay"></label>
+        <div class="flex flex-col gap-8 p-4 overflow-y-auto w-80 bg-base-100">
+            <span class="avatar place-self-center">
+                <img class="rounded-full" src={icon} alt="" />
+            </span>
+            <ul class="menu">
+                {menu.map(item => (
+                    <li><a href={item.path}>{item.name}</a></li>
+                ))}
+            </ul>
+        </div>
+    </section>
+</section>

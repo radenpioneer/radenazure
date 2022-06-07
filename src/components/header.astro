@@ -1,53 +1,31 @@
 ---
 import icon from '@assets/icon.jpg?w=50'
-
-const menu = [
-    {
-        name: 'Home',
-        path: '/'
-    },
-    {
-        name: 'Profil',
-        path: '/profil'
-    },
-    {
-        name: 'Catatan',
-        path: '/catatan'
-    },
-    {
-        name: 'Buat Website',
-        path: 'https://sngr.dev'
-    }
-]
+import menu from './shared/menu';
 ---
-<header class="navbar bg-base-100 md:p-4">
-    <div class="navbar-start">
-        <div class="dropdown">
-            <label tabindex="0" class="btn btn-ghost md:hidden mr-1">
+<header>
+    <nav class="navbar bg-base-100 pt-4 md:p-4">
+        <div class="navbar-start">
+            <label for="main-drawer" class="btn btn-ghost md:hidden">
                 <span class="menuIcon" />
             </label>
-            <ul class="dropdown-content menu menu-compact mt-3 p-2 bg-base-100 w-52">
+            <a class="md:avatar hidden" href="/">
+                <img class="rounded-full" src={icon} alt={Astro.site.hostname} />
+            </a>
+        </div>
+        <div class="navbar-center">
+            <ul class="hidden md:menu md:menu-horizontal p-0">
                 {menu.map(item => (
                     <li><a href={item.path}>{item.name}</a></li>
                 ))}
             </ul>
+            <a class="avatar md:hidden" href="/">
+                <img class="rounded-full" src={icon} alt="" />
+            </a>
         </div>
-        <a class="md:avatar hidden" href="/">
-            <img class="rounded-full" src={icon} alt="" />
-        </a>
-    </div>
-    <div class="navbar-center">
-        <ul class="hidden md:menu md:menu-horizontal p-0">
-            {menu.map(item => (
-                <li><a href={item.path}>{item.name}</a></li>
-            ))}
-        </ul>
-        <a class="avatar md:hidden" href="/">
-            <img class="rounded-full" src={icon} alt="" />
-        </a>
-    </div>
-    <div class="navbar-end"></div>
+        <div class="navbar-end"></div>
+    </nav>
 </header>
+
 
 <style lang="scss">
     @use '../styles/fonts';
