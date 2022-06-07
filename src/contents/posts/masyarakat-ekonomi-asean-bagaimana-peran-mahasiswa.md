@@ -1,5 +1,4 @@
 ---
-layout: "../../layouts/pages.astro"
 title: Masyarakat Ekonomi ASEAN, Bagaimana Peran Mahasiswa?
 date: 2015-04-18
 tags:

@@ -1,18 +1,54 @@
 ---
-const { title, isInPage, link } = Astro.props
+import { DateTime } from 'luxon'
+import readingTime from 'reading-time'
+
+export interface ArticleProps {
+    article: any
+    link?: string
+    isInPage?: boolean
+}
+
+const { article, isInPage, link } = Astro.props as ArticleProps
 ---
 
 <section class="max-w-screen-md mx-auto pt-8 pb-16 px-4">
     <article class="prose md:prose-lg max-w-none">
         <Fragment>
-            {isInPage 
-                ? <h1 class="text-center text-4xl md:text-6xl" set:text={title} />
-                : ( <h2 class="not-prose text-center text-4xl md:text-6xl link-hover">
-                        <a href={link}>{title}</a>
+            {isInPage
+                ? <h1 class="text-center text-4xl md:text-6xl !m-0" set:text={article.title} />
+                : ( <h2 class="not-prose font-extrabold text-center text-4xl md:text-6xl link-hover !m-0">
+                        <a href={link}>{article.title}</a>
                     </h2>
                   )
             }
+            <div class="not-prose flex flex-col items-center gap-4 py-8">
+                {article.description && <span class="text-xl md:text-3xl text-center italic">{article.description}</span>}
+                <div class="flex flex-row gap-2 justify-center uppercase">
+                    <time class="flex items-center gap-1" datetime={article.date}>
+                        <span class="timeIcon" />
+                        <span>{DateTime.fromISO(article.date).setLocale('id').toLocaleString(DateTime.DATE_FULL)}</span>
+                    </time>
+                    <span class="flex items-center gap-1">
+                        <span class="readTimeIcon" />
+                        <span>{`${Math.round(readingTime(article.raw).minutes)} menit baca`}</span>
+                    </span>
+                </div>
+            </div>
         </Fragment>
         <slot />
     </article>
 </section>
+
+<style lang="scss">
+    @use '../styles/fonts';
+
+    .timeIcon {
+        @extend %icon;
+        &:after { content: 'event'; }
+    }
+
+    .readTimeIcon {
+        @extend %icon;
+        &:after { content: 'timer'; }
+    }
+</style>

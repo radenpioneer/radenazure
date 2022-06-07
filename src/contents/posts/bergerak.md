@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/pages.astro
 title: Bergerak
 date: 2014-06-26
 tags:

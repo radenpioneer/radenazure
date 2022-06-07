@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/pages.astro
 title: "Bincang Sampit: Sejarah Islam di Kota Sampit"
 date: 2021-05-14
 image: ""

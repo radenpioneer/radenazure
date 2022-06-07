@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/pages.astro
 title: Cara Berpikir Gajah
 date: 2013-02-13
 image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/African_elephant_warning_raised_trunk.jpg/1024px-African_elephant_warning_raised_trunk.jpg'

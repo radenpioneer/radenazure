@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/pages.astro
 title: Tukang Galon & Toxic Parenting
 date: 2021-03-21
 tags:

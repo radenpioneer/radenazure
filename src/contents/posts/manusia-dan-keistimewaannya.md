@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/pages.astro
 title: Manusia dan Keistimewaannya
 date: 2013-02-14
 image: ""

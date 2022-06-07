@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/pages.astro
 title: Pesantren Elit
 date: 2020-09-04
 tags: []

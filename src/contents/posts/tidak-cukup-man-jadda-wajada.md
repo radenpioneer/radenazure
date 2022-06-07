@@ -1,5 +1,4 @@
 ---
-layout: "../../layouts/pages.astro"
 title: Tidak cukup man jadda wajada
 date: 2015-03-06
 tags:

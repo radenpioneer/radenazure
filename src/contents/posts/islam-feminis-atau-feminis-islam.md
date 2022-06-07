@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/pages.astro
 title: Islam Feminis, atau Feminis Islam?
 date: 2021-03-09
 description: Sebuah Catatan Diskusi
