@@ -1,0 +1,6 @@
+[[plugins]]
+    package = "netlify-plugin-minify-html"
+    [plugins.inputs.minifierOptions]
+        collapseWhitespace = true
+        minifyJS = true
+        processScripts = ["module"]
