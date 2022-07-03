@@ -3,30 +3,47 @@ import BaseLayout from '@layouts/base.astro'
 import ArticleComponent from '@components/article.astro'
 
 export async function getStaticPaths({ paginate }) {
-	const data = await Astro.glob('../contents/posts/*.md')
-	const posts = data
-		.filter(post => !post.frontmatter.draft)
-		.sort((a,b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf())
+  const data = await Astro.glob('../contents/posts/*.md')
+  const posts = data
+    .filter((post) => !post.frontmatter.draft)
+    .sort(
+      (a, b) =>
+        new Date(b.frontmatter.date).valueOf() -
+        new Date(a.frontmatter.date).valueOf()
+    )
 
-	return paginate(posts, { pageSize: 8 })
+  return paginate(posts, { pageSize: 8 })
 }
 
 const { page } = Astro.props
 ---
+
 <BaseLayout>
-	{page.data
-		.sort((a,b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf())
-		.map((post, i) => {
-			const url = `/posts/${post.file.split('/').slice(-1)[0].replace('.md', '')}`
-			const raw = post.rawContent()
-			return (
-				<Fragment>
-					{i !== 0 && <div class="divider"><span class="font-bold text-secondary uppercase">Artikel Selanjutnya</span></div>}
-					<ArticleComponent article={{raw, ...post.frontmatter}} link={url}>
-						<post.Content/>
-					</ArticleComponent>
-				</Fragment>
-			)
-		})
-	}
+  {page.data
+    .sort(
+      (a, b) =>
+        new Date(b.frontmatter.date).valueOf() -
+        new Date(a.frontmatter.date).valueOf()
+    )
+    .map((post, i) => {
+      const url = `/posts/${post.file
+        .split('/')
+        .slice(-1)[0]
+        .replace('.md', '')}`
+      const raw = post.rawContent()
+      return (
+        <Fragment>
+          {i !== 0 && (
+            <div class="divider">
+              <span class="font-bold text-secondary uppercase">
+                Artikel Selanjutnya
+              </span>
+            </div>
+          )}
+          <ArticleComponent article={{ raw, ...post.frontmatter }} link={url}>
+            <post.Content />
+          </ArticleComponent>
+        </Fragment>
+      )
+    })}
 </BaseLayout>

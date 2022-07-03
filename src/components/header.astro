@@ -1,37 +1,41 @@
 ---
 import icon from '@assets/icon.jpg?w=50'
-import menu from './shared/menu';
+import menu from './shared/menu'
 ---
+
 <header>
-    <nav class="navbar bg-base-100 pt-4 md:p-4">
-        <div class="navbar-start">
-            <label for="main-drawer" class="btn btn-ghost md:hidden">
-                <span class="menuIcon" />
-            </label>
-            <a class="md:avatar hidden" href="/">
-                <img class="rounded-full" src={icon} alt={Astro.site.hostname} />
-            </a>
-        </div>
-        <div class="navbar-center">
-            <ul class="hidden md:menu md:menu-horizontal p-0">
-                {menu.map(item => (
-                    <li><a href={item.path}>{item.name}</a></li>
-                ))}
-            </ul>
-            <a class="avatar md:hidden" href="/">
-                <img class="rounded-full" src={icon} alt="" />
-            </a>
-        </div>
-        <div class="navbar-end"></div>
-    </nav>
+  <nav class='navbar bg-base-100 pt-4 md:p-4'>
+    <div class='navbar-start'>
+      <label for='main-drawer' class='btn btn-ghost md:hidden'>
+        <span class='menuIcon'></span>
+      </label>
+      <a class='md:avatar hidden' href='/'>
+        <img class='rounded-full' src={icon} alt={Astro.site.hostname} />
+      </a>
+    </div>
+    <div class='navbar-center'>
+      <ul class='hidden md:menu md:menu-horizontal p-0'>
+        {menu.map((item) => (
+          <li>
+            <a href={item.path}>{item.name}</a>
+          </li>
+        ))}
+      </ul>
+      <a class='avatar md:hidden' href='/'>
+        <img class='rounded-full' src={icon} alt='' />
+      </a>
+    </div>
+    <div class='navbar-end'></div>
+  </nav>
 </header>
 
+<style lang='scss'>
+  @use '../styles/fonts';
 
-<style lang="scss">
-    @use '../styles/fonts';
-
-    .menuIcon {
-        @extend %icon;
-        &:after { content: 'menu'; }
+  .menuIcon {
+    @extend %icon;
+    &:after {
+      content: 'menu';
     }
+  }
 </style>

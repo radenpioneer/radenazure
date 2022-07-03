@@ -1,16 +1,13 @@
 module.exports = {
   content: [
     './src/**/*.{astro,js,jsx,svelte,ts,tsx,vue}',
-    './public/**/*.html'
+    './public/**/*.html',
   ],
   theme: {
     extend: {},
   },
-  plugins: [
-    require('daisyui'),
-    require('@tailwindcss/typography')
-  ],
+  plugins: [require('daisyui'), require('@tailwindcss/typography')],
   daisyui: {
-    themes: ['night']
-  }
+    themes: ['night'],
+  },
 }

@@ -1,4 +1,6 @@
 @use './tw';
 @use './fonts';
 
-body { @extend %body; }
+body {
+  @extend %body;
+}

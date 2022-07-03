@@ -3,52 +3,99 @@ import { DateTime } from 'luxon'
 import readingTime from 'reading-time'
 
 export interface ArticleProps {
-    article: any
-    link?: string
-    isInPage?: boolean
+  article: any
+  link?: string
+  isInPage?: boolean
 }
 
 const { article, isInPage, link } = Astro.props as ArticleProps
 ---
 
-<section class="max-w-screen-md mx-auto pt-8 pb-16 px-4">
-    <article class="prose md:prose-lg max-w-none">
-        <Fragment>
-            {isInPage
-                ? <h1 class="text-center text-4xl md:text-6xl !m-0" set:text={article.title} />
-                : ( <h2 class="not-prose font-extrabold text-center text-4xl md:text-6xl link-hover !m-0">
-                        <a href={link}>{article.title}</a>
-                    </h2>
-                  )
-            }
-            <div class="not-prose flex flex-col items-center gap-4 py-8">
-                {article.description && <span class="text-xl md:text-3xl text-center italic">{article.description}</span>}
-                <div class="flex flex-row gap-2 justify-center uppercase">
-                    <time class="flex items-center gap-1" datetime={article.date}>
-                        <span class="timeIcon" />
-                        <span>{DateTime.fromISO(article.date).setLocale('id').toLocaleString(DateTime.DATE_FULL)}</span>
-                    </time>
-                    <span class="flex items-center gap-1">
-                        <span class="readTimeIcon" />
-                        <span>{`${Math.round(readingTime(article.raw).minutes)} menit baca`}</span>
-                    </span>
-                </div>
-            </div>
-        </Fragment>
-        <slot />
-    </article>
+<section class='article__section'>
+  <article class='prose md:prose-lg max-w-none'>
+    <Fragment>
+      {isInPage ? (
+        <>
+          <h1 class="article__title !m-0" set:text={article.title} />
+          {article.description && (
+            <h2 class="article__subtitle" set:text={article.description} />
+          )}
+        </>
+      ) : (
+        <>
+          <h2 class="not-prose article__title font-extrabold !m-0">
+            <a class="link-hover" href={link}>
+              {article.title}
+            </a>
+          </h2>
+          {article.description && (
+            <h3 class="article__subtitle" set:text={article.description} />
+          )}
+        </>
+      )}
+      <div class='not-prose article__attributes'>
+        <time
+          class='badge badge-secondary article__badge'
+          datetime={article.date}
+        >
+          <span class='article__icon__date'></span>
+          <span
+            >{DateTime.fromISO(article.date)
+              .setLocale('id')
+              .toLocaleString(DateTime.DATE_FULL)}
+          </span>
+        </time>
+        <span class='badge badge-secondary article__badge'>
+          <span class='article__icon__readtime'></span>
+          <span
+            >{`${Math.round(readingTime(article.raw).minutes)} menit baca`}
+          </span>
+        </span>
+      </div>
+    </Fragment>
+    <slot></slot>
+  </article>
 </section>
 
-<style lang="scss">
-    @use '../styles/fonts';
+<style lang='scss'>
+  @use '../styles/fonts';
 
-    .timeIcon {
-        @extend %icon;
-        &:after { content: 'event'; }
-    }
+  .article__section {
+    @apply max-w-screen-md mx-auto pt-8 pb-16 px-4;
+  }
 
-    .readTimeIcon {
-        @extend %icon;
-        &:after { content: 'timer'; }
+  .article__title {
+    @apply text-center text-4xl md:text-6xl;
+  }
+
+  .article__subtitle {
+    @apply text-xl md:text-3xl text-center italic mt-4;
+  }
+
+  .article__attributes {
+    @apply flex flex-row gap-2 justify-center uppercase my-8;
+  }
+
+  .article__badge {
+    @apply flex items-center gap-1 p-1;
+  }
+
+  %article__icon {
+    @extend %icon;
+    @apply text-base;
+  }
+
+  .article__icon__date {
+    @extend %article__icon;
+    &:after {
+      content: 'event';
     }
+  }
+
+  .article__icon__readtime {
+    @extend %article__icon;
+    &:after {
+      content: 'timer';
+    }
+  }
 </style>

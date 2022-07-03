@@ -1,22 +1,23 @@
 ---
 import '@styles/global.scss'
-import Head from '@components/head.astro';
+import Head from '@components/head.astro'
 import Header from '@components/header.astro'
-import Drawer from '@components/drawer.astro';
+import Drawer from '@components/drawer.astro'
 
 const { title } = Astro.props
 ---
-<html lang="id">
-	<head>
-		<Head />
-		<title>{ title || 'radenazure\'s web log'  }</title>
-	</head>
-	<body>
-		<Drawer>
-			<Header />
-			<main>
-				<slot />
-			</main>
-		</Drawer>
-	</body>
+
+<html lang='id'>
+  <head>
+    <Head />
+    <title>{title || "radenazure's web log"}</title>
+  </head>
+  <body>
+    <Drawer>
+      <Header />
+      <main>
+        <slot></slot>
+      </main>
+    </Drawer>
+  </body>
 </html>

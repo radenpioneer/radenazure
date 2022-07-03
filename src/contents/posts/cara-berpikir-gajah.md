@@ -4,6 +4,7 @@ date: 2013-02-13
 image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/African_elephant_warning_raised_trunk.jpg/1024px-African_elephant_warning_raised_trunk.jpg'
 tags: []
 ---
+
 Ketika teman saya sedang melewati gajah, ia tiba-tiba berhenti, bingung dengan makhluk-makhluk besar yang diikat oleh tali kecil pada kaki depan mereka. Gajah tidak rantai, juga tidak dikandang. Sudah jelas gajah bisa melepaskan diri kapan saja dari tali yang mengikat gajah tersebut. Teman saya bertanya ke pelatih yang ada didekatnya, kenapa hewan-hewan besar (gajah) itu tidak berusaha melarikan diri, padahal itu adalah sangat mudah untuk gajah lakukan.
 
 ![Ilustrasi gajah](https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/African_elephant_warning_raised_trunk.jpg/1024px-African_elephant_warning_raised_trunk.jpg)

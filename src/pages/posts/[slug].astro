@@ -2,30 +2,35 @@
 import PagesLayout from '@layouts/pages.astro'
 
 export async function getStaticPaths() {
-	const data = await Astro.glob('../../contents/posts/*.md')
-	const posts = data
-		.filter(post => !post.frontmatter.draft)
-		.sort((a,b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf())
-        .map(post => {
-            return {
-                props: { 
-                    post: {
-                        raw: post.rawContent(),
-                        ...post
-                    } 
-                },
-                params: { 
-                    slug: post.file.split('/').slice(-1)[0].replace('.md', '')
-                }
-            }
-        })
+  const data = await Astro.glob('../../contents/posts/*.md')
+  const posts = data
+    .filter((post) => !post.frontmatter.draft)
+    .sort(
+      (a, b) =>
+        new Date(b.frontmatter.date).valueOf() -
+        new Date(a.frontmatter.date).valueOf()
+    )
+    .map((post) => {
+      return {
+        props: {
+          post: {
+            raw: post.rawContent(),
+            ...post,
+          },
+        },
+        params: {
+          slug: post.file.split('/').slice(-1)[0].replace('.md', ''),
+        },
+      }
+    })
 
-	return posts
+  return posts
 }
 
 const { post } = Astro.props
 const { slug } = Astro.params
 ---
-<PagesLayout article={{raw: post.raw, ...post.frontmatter}}>
-    <post.Content/>
+
+<PagesLayout article={{ raw: post.raw, ...post.frontmatter }}>
+  <post.Content />
 </PagesLayout>

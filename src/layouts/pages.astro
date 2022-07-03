@@ -4,8 +4,9 @@ import ArticleComponent from '@components/article.astro'
 
 const { article } = Astro.props
 ---
+
 <BaseLayout title={article.title}>
-    <ArticleComponent article={article} isInPage={true}>
-        <slot/>
-    </ArticleComponent>
+  <ArticleComponent article={article} isInPage={true}>
+    <slot></slot>
+  </ArticleComponent>
 </BaseLayout>
